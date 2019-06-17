@@ -1,32 +1,36 @@
-/*  @Doc
+  /*  @Doc
     Query to show the retention rate of monthly user cohorts.
 
     Shows number of users who used the app in this current month,
     grouped together by number of month since they first used the app.
 */
+WITH
+  -- Create a base_events dataset to create a new first_open_date column for all events
+  events AS (
+  SELECT
+    DATE(TIMESTAMP_MICROS(user_first_touch_timestamp)) AS first_open_date,
+    *
+  FROM
+    `pslove-usa.analytics_182790814.*`)
+  --
+  --
 SELECT
   EXTRACT(year
   FROM
-    DATE(TIMESTAMP_MILLIS(up.value.int_value))) AS created_year,
+    first_open_date) AS created_year,
   EXTRACT(month
   FROM
-    DATE(TIMESTAMP_MILLIS(up.value.int_value))) AS created_month,
+    first_open_date) AS created_month,
   -- Number of months from signup, by finding diff in months between event data and created date
-  DATE_DIFF(PARSE_DATE('%Y%m%d',
-      event_date), DATE(TIMESTAMP_MILLIS(up.value.int_value)), MONTH) AS mnth_diff,
-  COUNT(DISTINCT user_id) AS num_of_users
+  DATE_DIFF(DATE(TIMESTAMP_MICROS(event_timestamp)), first_open_date, MONTH) AS mnth_diff,
+  --
+  --
+  COUNT(DISTINCT user_pseudo_id) AS num_of_users
 FROM
-  `pslove-usa.analytics_182790814.*`,
-  UNNEST(user_properties) AS up
-WHERE
-  -- Only display rows with first_open_time
-  up.key = 'first_open_time'
-  -- Filter out non-app users
-  AND (platform LIKE "%ANDROID%"
-    OR platform LIKE "%IOS%")
-    --  There should be 1 or 2 more users without the below 2 filters, as it will group all null user_ids as 1 user and anonymous as another
-  AND user_id IS NOT NULL
-  AND user_id NOT LIKE 'anonymous'
+  events
+/* When filter for manual installs, the numbers become quite different from the firebase value. */
+-- WHERE
+--   app_info.install_source NOT LIKE "%manual%"
 GROUP BY
   -- The order of the grouping is very important! DO NOT CHANGE
   created_year,
