@@ -13,7 +13,7 @@ WITH
     `pslove-usa.analytics_182790814.*`
   WHERE
     -- Filter for events that occured in the past 8 weeks, and using CURRENT_DATE without any parameters for UTC date.
-    -- This filter can be removed, but, it there will be alot more data to process and older data might not be as useful
+    -- This filter can be removed, but, there will be alot more data to process and older data might not be as useful
     DATE_DIFF(CURRENT_DATE(), DATE(TIMESTAMP_MICROS(user_first_touch_timestamp)), WEEK) < 9),
   --
   --
@@ -33,6 +33,15 @@ WITH
   -- Filter off data from base_events dataset whose event_date is before first monday
   events AS (
   SELECT
+    -- weeks_since_first_open_time,
+    -- Number of weeks from the first monday to the week of this event
+    DATE_DIFF(first_open_date, mon.date, WEEK) AS signup_week,
+    --
+    -- Number of weeks from signup
+    -- This is selected and inserted into this dataset, so that it is only calculated once
+    DATE_DIFF(DATE(TIMESTAMP_MICROS(event_timestamp)), first_open_date, week) AS week_diff,
+    --
+    -- Select all the other events from base_events dataset
     base_events.*
   FROM
     base_events,
@@ -44,13 +53,8 @@ WITH
   --
   --
 SELECT
-  -- weeks_since_first_open_time,
-  -- Number of weeks from the first monday to the week of this event
-  DATE_DIFF(first_open_date, mon.date, WEEK) AS signup_week,
-  --
-  -- Number of weeks from signup
-  DATE_DIFF(DATE(TIMESTAMP_MICROS(event_timestamp)), first_open_date, week) AS week_diff,
-  --
+  signup_week,
+  week_diff,
   -- Count user_pseudo_id because not all users have user_ids
   COUNT(DISTINCT user_pseudo_id) AS num_of_users
 FROM
@@ -59,6 +63,8 @@ FROM
 WHERE
   -- Filter out manual installs
   app_info.install_source NOT LIKE "%manual%"
+  -- At least 0 filter, as sometimes due to rounded timestamps, there will be negative values for week_diff
+  AND week_diff > -1
 GROUP BY
   -- The order of the grouping is very important! DO NOT CHANGE
   signup_week,

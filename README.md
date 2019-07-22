@@ -1,6 +1,7 @@
 # Big Query queries
 Repo contains all our queries used on BQ.  
-.vscode workspace config file is also saved. Feel free to use it or not.
+This repo is essentially for backing up all the Quries used, alongside with base queries and archived queries.  
+.vscode workspace config file is also saved. Feel free to use it or not.  
 
 
 ## Repo structure and descriptions
@@ -17,8 +18,13 @@ current
 - Also contains all the queries that are being worked on right now.
 - Similiar queries in this directory may also be grouped together too.
 
+AKM
+- AKM ==> App Key Metrics
+- This folder contains all the queries that are used for generating the data used in the app key metrics spread sheet.
 
 ## Calculating cohort using BigQuery
+**Note** on the data for queries like Cohort analysis:  
+Although we are able to get the same numbers as those shown in firebase analytics and events dashboard, we will not be following their numbers as they differ from our calculated values due the difference in data filters. However, even though the numbers are not the same despite being pretty close as firebase, the month to month difference in terms of percentage and all should still present to us the same set of "growth" numbers. Like if there is a 10% user base growth shown on firebase analytics, it should be around the same too for our values.  
 All time and date data needed should be extracted from a timestamp value. And all timestamp values should be in UTC format for consistency. Timestamps that are available for use in the events database are:
 - event_timestamp
 - user_first_touch_timestamp
