@@ -1,0 +1,86 @@
+//
+//////////////
+///////////////////////DID NOT WENT THROUGH//////////////////////
+
+
+
+[{
+    doc_ID: '1905082321483488674',
+    shipping__country_dial_code: '60',
+    shipping__address_line2: 'Taman Taufik',
+    shipping__mobile_number: '143494762',
+    shipping__city: 'Ipoh',
+    shipping__state: 'Perak',
+    shipping__email: 'Shelbyow@gmail.com',
+    shipping__postal_code: '31350',
+    shipping__country: 'Malaysia',
+    shipping__address_line1: '22 Persiaran Rapat Baru 8 ',
+    total_amount: 101,
+    discounted_amount: 519,
+    ship_method__method_min_weight: 0,
+    ship_method__method_provider: 'pslove',
+    ship_method__method_max_weight: 5,
+    ship_method__method_name: 'Overseas Registered Mail',
+    ship_method__method_price: 1500,
+    ship_method__method_currency: 'MYR',
+    ship_method__ship_method_id: 'SP5hi3zv6szy2boFMhRU',
+    modified_at___seconds: 1557329010,
+    modified_at___nanoseconds: 81000000,
+    description: 'MenstruHeat (1RM)',
+    referral_code: 'normal',
+    payment_status: 'paid',
+    razer__transaction_id: '87728453',
+    razer__appcode: '',
+    razer__status: '00',
+    razer__currency: 'RM',
+    razer__channel: 'FPX',
+    razer__skey: '1fbbf65339582866da44d26589df8658',
+    track_code: 'edm',
+    created_at___seconds: 1557329010,
+    created_at___nanoseconds: 81000000,
+    currency_code: 'MYR'
+}]
+
+//DID WENT THROUGH
+[
+    {
+        "doc_ID": "1905091306138874572",
+        "referral_code": "normal",
+        "payment_status": "paid",
+        "razer__channel": "FPX",
+        "razer__skey": "b9c952cde0115720b6edd5bbbc612b61",
+        "razer__currency": "RM",
+        "razer__appcode": "",
+        "razer__transaction_id": "87808383",
+        "shipping__address_line2": null,
+        "razer__status": "00",
+        "created_at___seconds": "1557378522",
+        "created_at___nanoseconds": "714000000",
+        "currency_code": "MYR",
+        "shipping__address_line1": "Lot 3.12",
+        "shipping__country_dial_code": "60",
+        "shipping__mobile_number": "162259786",
+        "shipping__city": "Johor Bahru",
+        "shipping__state": "Johor",
+        "shipping__email": "thomasvivian2507@gmail.com",
+        "shipping__country": "Malaysia",
+        "total_amount": "101",
+        "discounted_amount": "519",
+        "ship_method__method_max_weight": "0.99",
+        "ship_method__method_name": "Guardian Collection Point",
+        "ship_method__method_price": "0",
+        "ship_method__method_currency": "MYR",
+        "ship_method__ship_method_id": "wnNNc0C9ZyuPR83nGAmt",
+        "ship_method__method_min_weight": "0.0",
+        "ship_method__method_provider": "Guardian",
+        "modified_at___seconds": "1557378522",
+        "modified_at___nanoseconds": "714000000",
+        "description": "MenstruHeat (1RM)",
+        "shipping__postal_code": null,
+        "collection_point__site_name": "SOLARIS MOUNT KIARA, KL",
+        "collection_point__region_name": "Wil. Persekutuan",
+        "collection_point__address": "NO. 8 & 10, GROUND FLOOR,,SOLARIS MOUNT KIARA, JLN SOLARIS 51,OFF JALAN DUTA KIARA",
+        "collection_point__id": "uH1XgXf4LAguhdZvLPfI",
+        "share_code": "qrFmXVD"
+    }
+]
