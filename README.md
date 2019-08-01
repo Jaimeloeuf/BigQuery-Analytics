@@ -5,22 +5,25 @@ This repo is essentially for backing up all the Quries used, alongside with base
 
 
 ## Repo structure and descriptions
-archived
-- Old queries that are no longer used in production.
-- Still kept for reference.
+- archived (Old queries that are no longer used in production, but these are still kept for reference use only)
+    - AKM (App Key Metrics)
+        - This folder contains all the queries that are used for generating the data used in the app key metrics spread sheet.
+    - Descrepancy
+        - This folder contains Queries that were used to see why is there data descrepancies between Firebase analytics reporting and the data retrieved via BQ Queries.
+        - Alot of these have hardcoded date/time values, which makes them unusable now.
+    - Weekly Cohort Retention
+        - This folder contains the queries used for doing Weekly cohort retention in a now replaced way.
+    - Others
+        - Other queries here and there that are no longer used.
 
-base_queries
-- Contains all the base queries that can be built upon to create more complex queries.
-- Most of these queries can be used for chaining purposes, as they can be built into a "WITH" clause.
+- base_queries
+    - Contains all the base queries that can be built upon to create more complex queries.
+    - Most of these queries can be used for chaining purposes, as they can be built into a "WITH" clause.
 
-current
-- Contains all the queries currently used in production.
-- Also contains all the queries that are being worked on right now.
-- Similiar queries in this directory may also be grouped together too.
-
-AKM
-- AKM ==> App Key Metrics
-- This folder contains all the queries that are used for generating the data used in the app key metrics spread sheet.
+- current
+    - Contains all the queries currently used in production.
+    - Also contains all the queries that are being worked on right now.
+    - Similiar queries in this directory may also be grouped together too.
 
 ## Calculating cohort using BigQuery
 **Note** on the data for queries like Cohort analysis:  
