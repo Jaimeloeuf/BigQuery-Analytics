@@ -8,6 +8,11 @@ This repo is essentially for backing up all the Quries used, alongside with base
 - archived (Old queries that are no longer used in production, but these are still kept for reference use only)
     - AKM (App Key Metrics)
         - This folder contains all the queries that are used for generating the data used in the app key metrics spread sheet.
+    - Base Queries
+        - Base Queries that are archived
+        - Mainly base queries for the User Database, that was used before the new firestore data import method was used.
+        - This queries works with the Firestore database schema created with the use of the old manual data insertion method with the cron job code in "pipeline/"
+        - As the data from firestore is now automatically streamed in as firebase data uses BQ as its data warehouse, the schema has drastically changed to a form where the NoSQL is automatically flattened by BQ to work in the RDBMS. More info on the schema is available online.
     - Descrepancy
         - This folder contains Queries that were used to see why is there data descrepancies between Firebase analytics reporting and the data retrieved via BQ Queries.
         - Alot of these have hardcoded date/time values, which makes them unusable now.
